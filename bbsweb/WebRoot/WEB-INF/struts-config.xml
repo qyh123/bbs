@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="SelectTopicForm"
+			type="com.itstar.bbs.form.SelectTopicForm">
+		</form-bean>
+		<form-bean name="SelectUserForm"
+			type="com.itstar.bbs.form.SelectUserForm">
+		</form-bean>
+		<form-bean name="userForm" type="com.itstar.bbs.form.UserForm" />
+		<form-bean name="LoginForm"
+			type="com.itstar.action.LoginForm">
+		</form-bean>
+		<form-bean name="ReplyForm"
+			type="com.itstar.bbs.form.ReplyForm" />
+		<form-bean name="deletePostsForm"
+			type="com.itstar.manage.control.form.DeletePostsForm" />
+		<form-bean name="edituserForm"
+			type="com.itstar.bbs.form.EdituserForm" />
+		<form-bean name="editPostsForm"
+			type="com.itstar.bbs.form.EditPostsForm" />
+		<form-bean name="posttopicForm"
+			type="com.itstar.bbs.form.PosttopicForm" />
+		<form-bean name="addUserForm"
+			type="com.itstar.manage.control.form.AddUserForm" />
+		<form-bean name="topicInfoForm"
+			type="com.itstar.manage.control.form.TopicInfoForm" />
+		<form-bean name="addBunUserForm"
+			type="com.itstar.manage.control.form.AddBunUserForm" />
+    <form-bean name="addSectionForm" type="com.itstar.manage.control.form.AddSectionForm" />
+
+	</form-beans>
+	<global-exceptions />
+	<global-forwards>
+          <forward name="error" path="/web/error/error.jsp" />
+	</global-forwards>
+	<action-mappings>
+
+		<action path="/login" attribute="userForm" name="userForm"
+			scope="request" type="com.itstar.action.LoginAction">
+			<forward name="success" path="/web/bbs/pointInfo.jsp" />
+			<forward name="index" path="/index.jsp" />
+			<forward name="wrong" path="/web/login.jsp"></forward>
+		</action>
+		<action path="/saveToken" type="com.itstar.action.SaveTokenAction">
+			<forward name="addUser" path="/web/admin/addUser.jsp" />
+			<forward name="bunUser" path="/web/admin/bunUser.jsp" />
+			<forward name="edituser" path="/web/bbs/edituser.jsp" />
+			<forward name="post" path="/web/bbs/post.jsp" />
+			<forward name="reply" path="/web/bbs/reply.jsp" />
+			<forward name="add_section"
+				path="/web/admin/add_section.jsp" />
+			<forward name="findpassword"
+				path="/web/bbs/findpassword.jsp" />
+			<forward name="register" path="/web/register.jsp" />
+		</action>
+		<action path="/searchUser" name="SelectUserForm"
+			type="com.itstar.bbs.action.SelectUserAction">
+			<forward name="success"
+				path="/web/bbs/showSelectUser.jsp">
+			</forward>
+		</action>
+		<action path="/editUser" attribute="edituserForm"
+			name="edituserForm" scope="request"
+			type="com.itstar.bbs.action.EditUserAction">
+			<forward name="edituser" path="/web/bbs/pointInfo.jsp">
+			</forward>
+		</action>
+		<action path="/searchTopic" name="SelectTopicForm"
+			type="com.itstar.bbs.action.SelectTopicAction">
+
+			<forward name="success" path="/web/bbs/showSelect.jsp"></forward>
+		</action>
+
+		<action path="/register" attribute="userForm" name="userForm"
+			parameter="method" scope="request"
+			type="com.itstar.action.RegisterAction">
+			<forward name="showMessage" path="/web/bbs/pointInfo.jsp" />
+		</action>
+		<action path="/findPassword" attribute="userForm"
+			name="userForm" scope="request"
+			type="com.itstar.bbs.action.FindPasswordAction">
+			<forward name="message" path="/web/bbs/pointInfo.jsp" />
+		</action>
+		<action path="/editState"
+			type="com.itstar.manage.control.action.EditStateAction">
+		</action>
+		<action path="/show" scope="request" name="editPostsForm"
+			attribute="editPostsForm" parameter="method"
+			type="com.itstar.bbs.action.PostsAction">
+			<forward name="show" path="/web/bbs/showTopic.jsp"></forward>
+			<forward name="guanshui" path="/web/bbs/pointInfo.jsp"></forward>
+		</action>
+		<action path="/section" scope="request" parameter="method"
+			type="com.itstar.bbs.action.SectionAction">
+		</action>
+		<action path="/index" attribute="topicInfoForm"
+			name="topicInfoForm" scope="request"
+			type="com.itstar.bbs.action.IndexAction">
+			<forward name="index" path="/index.jsp"></forward>
+		</action>
+		<action path="/editAndQuoteTopic"
+			type="com.itstar.bbs.action.EditAndQuoteTopicAction">
+			<forward name="success" path="/web/bbs/editTopic.jsp" />
+		</action>
+		<action path="/showTopicList"
+			type="com.itstar.bbs.action.TopicListAction" parameter="method">
+			<forward name="showTopicList"
+				path="/web/bbs/showTopicList.jsp" />
+			<forward name="showGoodTopic"
+				path="/web/bbs/showGoodTopic.jsp" />
+			<forward name="showNewTopic"
+				path="/web/bbs/showNewTopic.jsp" />
+		</action>
+		<action path="/validateOldPassword" attribute="userForm"
+			name="userForm"
+			type="com.itstar.bbs.action.ValidateOldPasswordAction" />
+
+		<!-- 后台 -->
+		<action path="/adminlogin" attribute="userForm"
+			input="/web/admin/adminlogin.jsp" name="userForm" scope="request"
+			validate="true"
+			type="com.itstar.manage.control.action.AdminloginAction">
+			<forward name="adminlogin"
+				path="/web/admin/framemain.jsp">
+			</forward>
+			<forward name="wrong" path="/web/adminlogin.jsp"></forward>
+			<forward name="out" path="/web/adminlogin.jsp"></forward>
+		</action>
+		<action path="/editSection"
+			type="com.itstar.manage.control.action.EditSectionAction">
+		</action>
+		<action path="/adduser" scope="request" attribute="userForm"
+			name="userForm"
+			type="com.itstar.manage.control.action.AddUserAction">
+			<forward name="point" path="/web/admin/adminPoint.jsp" />
+		</action>
+		<action path="/displaySection" parameter="method"
+			type="com.itstar.manage.control.action.DisplaySectionAction">
+			<forward name="showSection"
+				path="/web/admin/displaySection.jsp" />
+			<forward name="delete"
+				path="/displaySection.do?method=show" />
+			<forward name="view" path="/web/admin/edit_section.jsp" />
+		</action>
+		<action path="/displayTopic" parameter="method"
+			name="topicInfoForm" attribute="topicInfoForm"
+			type="com.itstar.manage.control.action.DisplayTopicAction">
+			<forward name="showTopic"
+				path="/web/admin/displayTopic.jsp" />
+			<forward name="update" path="/displayTopic.do?method=show" />
+		</action>
+		<action path="/displayUser" parameter="method"
+			type="com.itstar.manage.control.action.DisplayUserAction">
+			<forward name="showUser" path="/web/admin/displayUser.jsp" />
+			<forward name="delete" path="/displayUser.do?method=show" />
+		</action>
+
+		<action path="/addSection" name="addSectionForm" attribute="addSectionForm"
+			type="com.itstar.manage.control.action.AddSectionAction">
+			<forward name="point" path="/web/admin/adminPoint.jsp" />
+		</action>
+		<action path="/deletePosts" name="deletePostsForm"
+			attribute="deletePostsForm" scope="request" parameter="method"
+			type="com.itstar.manage.control.action.DeletePostsAction">
+			<forward name="show" path="/web/admin//deletePosts.jsp">
+			</forward>
+			<forward name="deleteposts"
+				path="/deletePosts.do?method=show">
+			</forward>
+		</action>
+		<action path="/findPasswordManage" parameter="method"
+			type="com.itstar.manage.control.action.FindPasswordManageAction">
+			<forward name="findPassword"
+				path="/web/admin/findPassword.jsp" />
+			<forward name="delete"
+				path="/findPasswordManage.do?method=show">
+			</forward>
+		</action>
+		<action path="/bunUser" attribute="addBunUserForm"
+			scope="request" name="addBunUserForm" parameter="method"
+			type="com.itstar.manage.control.action.BunUserAction">
+			<forward name="info" path="/web/admin/adminPoint.jsp"></forward>
+		</action>
+
+	</action-mappings>
+	<message-resources
+		parameter="com.itstar.manage.control.ApplicationResources" />
+</struts-config>
+

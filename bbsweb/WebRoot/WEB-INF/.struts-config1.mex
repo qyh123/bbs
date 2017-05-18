@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="errors;6" location="982,6" dimension="106,72" />
+  <StrutsActivity path="/index.jsp" location="541,184" dimension="100,48" />
+  <StrutsActivity path="/page/wang/showSelect.jsp" location="50,150" dimension="190,48" />
+  <StrutsActivity path="/page/wang/showSelectUser.jsp" location="950,150" dimension="214,48" />
+  <StrutsTransition id="/topic.do,empty,/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="98,84" />
+      <AbsolutePoint location="98,149" />
+      <AbsolutePoint location="551,149" />
+      <AbsolutePoint location="551,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="errors;6,null,/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1035,78" />
+      <AbsolutePoint location="1035,149" />
+      <AbsolutePoint location="631,149" />
+      <AbsolutePoint location="631,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,empty,/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="591,84" />
+      <AbsolutePoint location="591,184" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user.do,success,/page/wang/showSelectUser.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="688,84" />
+      <AbsolutePoint location="688,179" />
+      <AbsolutePoint location="950,179" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/topic.do,success,/page/wang/showSelect.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="197,42" />
+      <AbsolutePoint location="145,174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
